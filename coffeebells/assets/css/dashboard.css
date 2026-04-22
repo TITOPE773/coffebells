@@ -1,0 +1,69 @@
+/* ============================================================
+   DASHBOARD CSS — CoffeeBells & Home
+   ============================================================ */
+
+:root {
+    --dash-sidebar-w : 260px;
+    --dash-topbar-h  : 60px;
+    --dash-bg        : #f4f1ec;
+    --dash-card-bg   : #ffffff;
+    --dash-border    : #e8e0d5;
+}
+
+/* ── Layout base ─────────────────────────────────── */
+.dash-body      { background: var(--dash-bg); font-family: var(--font-body, 'Inter', sans-serif); }
+.dash-sidebar   { position: fixed; top: 0; left: 0; height: 100vh; width: var(--dash-sidebar-w); background: var(--coffee, #3e2723); overflow-y: auto; z-index: 1000; transition: transform .3s ease; }
+.dash-main      { margin-left: var(--dash-sidebar-w); min-height: 100vh; transition: margin .3s ease; }
+.dash-topbar    { position: sticky; top: 0; height: var(--dash-topbar-h); background: #fff; border-bottom: 1px solid var(--dash-border); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; z-index: 900; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+.dash-content   { padding: 1.5rem; }
+
+/* ── Sidebar ─────────────────────────────────────── */
+.sidebar-brand        { display: flex; align-items: center; gap: .75rem; padding: 1.25rem 1.25rem 1rem; border-bottom: 1px solid rgba(255,255,255,.1); }
+.sidebar-brand-icon   { width: 42px; height: 42px; border-radius: 12px; background: var(--warm-yellow, #e8a838); color: var(--coffee, #3e2723); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+.sidebar-brand-name   { font-family: var(--font-title, 'Playfair Display', serif); font-size: 1rem; color: #fff; line-height: 1.2; }
+.sidebar-brand-sub    { font-size: .7rem; color: rgba(255,255,255,.5); }
+.sidebar-section-label{ font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.35); padding: 1rem 1.25rem .3rem; }
+.sidebar-nav          { display: flex; flex-direction: column; gap: .1rem; padding: 0 .75rem; }
+.sidebar-link         { display: flex; align-items: center; gap: .75rem; padding: .6rem .85rem; border-radius: 10px; color: rgba(255,255,255,.7); text-decoration: none; font-size: .88rem; transition: all .2s; position: relative; }
+.sidebar-link:hover,
+.sidebar-link.active  { background: rgba(255,255,255,.12); color: #fff; }
+.sidebar-link.active  { background: var(--warm-yellow, #e8a838) !important; color: var(--coffee, #3e2723) !important; font-weight: 600; }
+.sidebar-link-danger  { color: rgba(255,100,100,.7) !important; }
+.sidebar-link-danger:hover { background: rgba(255,100,100,.12) !important; color: #ff6464 !important; }
+.sidebar-badge        { margin-left: auto; background: var(--terracota, #c1674b); color: #fff; font-size: .65rem; font-weight: 700; padding: .15rem .45rem; border-radius: 50px; min-width: 20px; text-align: center; }
+
+/* ── Cards ───────────────────────────────────────── */
+.dash-card            { background: var(--dash-card-bg); border-radius: 16px; border: 1px solid var(--dash-border); overflow: hidden; }
+.dash-card-header     { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; border-bottom: 1px solid var(--dash-border); }
+.dash-card-header h6  { margin: 0; font-weight: 700; color: var(--coffee, #3e2723); font-size: .9rem; }
+.dash-card-body       { padding: 1.25rem; }
+
+/* ── KPIs ────────────────────────────────────────── */
+.kpi-card             { background: #fff; border-radius: 16px; padding: 1.25rem; display: flex; align-items: flex-start; gap: 1rem; border: 1px solid var(--dash-border); transition: transform .2s, box-shadow .2s; }
+.kpi-card:hover       { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+.kpi-icon             { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+.kpi-value            { font-size: 1.5rem; font-weight: 800; color: var(--coffee, #3e2723); line-height: 1.2; font-family: var(--font-title, serif); }
+.kpi-label            { font-size: .78rem; color: var(--gray-500, #6c757d); margin: .2rem 0; }
+.kpi-trend            { font-size: .72rem; font-weight: 600; }
+.trend-up             { color: var(--primary, #6b8f71); }
+.trend-warn           { color: var(--warm-yellow, #e8a838); }
+.trend-danger         { color: #dc3545; }
+
+/* ── Tabla ───────────────────────────────────────── */
+.dash-table           { font-size: .85rem; }
+.dash-table thead th  { background: var(--dash-bg); color: var(--coffee, #3e2723); font-weight: 700; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; border-bottom: 2px solid var(--dash-border); padding: .75rem 1rem; }
+.dash-table tbody td  { padding: .7rem 1rem; vertical-align: middle; border-color: var(--dash-border); }
+.dash-table tbody tr:hover { background: rgba(107,143,113,.04); }
+
+/* ── Page title ──────────────────────────────────── */
+.dash-page-title      { font-family: var(--font-title, serif); color: var(--coffee, #3e2723); font-size: 1.4rem; font-weight: 700; }
+
+/* ── Topbar avatar ───────────────────────────────── */
+.topbar-avatar        { width: 36px; height: 36px; border-radius: 50%; background: var(--warm-yellow, #e8a838); color: var(--coffee, #3e2723); font-weight: 800; font-size: 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 991px) {
+    .dash-sidebar { transform: translateX(-100%); }
+    .dash-sidebar.open { transform: translateX(0); }
+    .dash-main { margin-left: 0; }
+}

@@ -1,0 +1,50 @@
+# ============================================================
+# .HTACCESS — CoffeeBells & Home
+# ============================================================
+
+Options -Indexes
+ServerSignature Off
+
+# ── PHP ──────────────────────────────────────────────────
+<IfModule mod_php.c>
+    php_flag display_errors Off
+    php_value session.cookie_httponly 1
+    php_value session.use_strict_mode 1
+</IfModule>
+
+# ── REWRITE ───────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /coffeebells/
+
+    # Proteger archivos sensibles
+    RewriteRule ^\.env\.php$ - [F,L]
+    RewriteRule ^database/   - [F,L]
+
+    # Forzar HTTPS en producción (descomentar en servidor)
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ── SEGURIDAD ─────────────────────────────────────────────
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ── GZIP ──────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json
+</IfModule>
+
+# ── CACHÉ ESTÁTICOS ───────────────────────────────────────
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg  "access plus 1 month"
+    ExpiresByType image/png   "access plus 1 month"
+    ExpiresByType image/webp  "access plus 1 month"
+    ExpiresByType text/css    "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+</IfModule>
